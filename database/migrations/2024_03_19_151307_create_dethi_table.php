@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('dethi', function (Blueprint $table) {
             $table->id();
+            $table->string('tendethi');
+            $table->string('slug');
             $table->dateTime('thoigiantao');
             $table->integer('thoigianthi');
             $table->dateTime('thoigianbatdau');
