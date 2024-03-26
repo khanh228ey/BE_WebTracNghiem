@@ -21,8 +21,4 @@ class Ketqua extends Model
     }
 
     
-    public function chiTietKetQua()
-    {
-        return $this->hasOne(Chitietketqua::class);
-    }
 }

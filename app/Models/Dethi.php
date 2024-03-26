@@ -10,13 +10,14 @@ class Dethi extends Model
     use HasFactory;
     protected $table = 'dethi';
 
-    public function chiTietDeThi(){
-        return $this->belongsToMany(Cauhoi::class,'chitietdethi','dethi_id','cauhoi_id');
-    }
-
     public function Monhoc()
     {
         return $this->belongsTo(Monhoc::class);
     }
+    public function Cauhoi()
+    {
+        return $this->hasMany(Cauhoi::class,'dethi_id');
+    }
+   
     
 }

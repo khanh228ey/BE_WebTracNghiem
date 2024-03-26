@@ -10,8 +10,10 @@ class Cauhoi extends Model
     use HasFactory;
     protected $table = 'cauhoi';
 
-    public function cauTraLoi()
+
+    public function Dethi()
     {
-        return $this->hasMany(Cautraloi::class);
+        return $this->belongsTo(Dethi::class,'dethi_id');
     }
+  
 }
