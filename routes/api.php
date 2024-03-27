@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CauhoiController;
 use App\Http\Controllers\DeThiController;
 use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\UserController;
@@ -35,8 +36,9 @@ Route::post('logout',[AuthController::class,'logout']);
 Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
 Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
-// Route::get('them-de-thi',[DeThiController::class,'themDeThi']);
+Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
 
+Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
 
 //api mon hoc
 Route::get('danh-sach-mon-hoc', [MonHocController::class,'listMonHoc']);
