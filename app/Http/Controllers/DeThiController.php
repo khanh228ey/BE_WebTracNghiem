@@ -28,6 +28,13 @@ class DeThiController extends Controller
         $chiTietDeThi = Dethi::with('Monhoc','Cauhoi')->where('id',$id)->first();
         return response()->json($chiTietDeThi);
     }
+
+
+    public function themDeThi(Request $request){
+        $data = $request->all();
+        
+    }
+
     
 
 
