@@ -27,9 +27,9 @@ Api môn học CRUD MÔN HOC
 
 http://127.0.0.1:8000/api/danh-sach-mon-hoc get
 http://127.0.0.1:8000/api/them-mon-hoc post
-http://127.0.0.1:8000/chi-tiet-mon-hoc/{id} get
-http://127.0.0.1:8000/update-mon-hoc/{id} post
-http://127.0.0.1:8000/xoa-mon=hoc/{id}; get
+http://127.0.0.1:8000/api/chi-tiet-mon-hoc/{id} get
+http://127.0.0.1:8000/api/update-mon-hoc/{id} post
+http://127.0.0.1:8000/api/xoa-mon=hoc/{id}; get
 
 
 

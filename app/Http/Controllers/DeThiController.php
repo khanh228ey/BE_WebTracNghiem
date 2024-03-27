@@ -6,8 +6,10 @@ use App\Models\Cauhoi;
 use App\Models\Cautraloi;
 use App\Models\ChiTietDeThi;
 use App\Models\Dethi;
+use App\Models\Ketqua;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class DeThiController extends Controller
@@ -71,7 +73,9 @@ class DeThiController extends Controller
             return response()->json(['message' => 'Tạo đề thi thành công.'], 200);
         }
 
-    
+       
+       
+        
 }
 
     

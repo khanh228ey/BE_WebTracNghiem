@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CauhoiController;
 use App\Http\Controllers\DeThiController;
+use App\Http\Controllers\KetquaController;
 use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\UserController;
 use App\Models\Dethi;
@@ -50,3 +51,6 @@ Route::get('xoa-mon-hoc/{id}',[MonHocController::class,'xoaMonHoc']);
 
 //api danh sach user
 Route::get('danh-sach-sinh-vien',[UserController::class,'getSinhVien']);
+
+//ketqua
+Route::post('nop-bai',[KetquaController::class,'ketQuaLamBai']);
