@@ -28,6 +28,7 @@ class AuthController extends Controller
             $responseData = [
                 'message' => 'Đăng nhập thành công',
                 'user' => [
+                    'id' =>$user->id,
                     'name' => $user->name,
                     'email' => $user->email,
                     'vaitro' => $user->vaitro // giả sử role được lưu trong cột "role" của bảng users
@@ -53,7 +54,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'vaitro' => 0,
+            'vaitro' => 2,
         ]);
         return response()->json(['message' => 'Đăng kí thành công', 'user' => $user], 201);
     }

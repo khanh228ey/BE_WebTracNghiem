@@ -38,7 +38,8 @@ Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
 Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
 Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
-
+Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
+Route::put('xoa-de-thi',[DeThiController::class,'xoaDeThi']);
 Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
 
 //api mon hoc
