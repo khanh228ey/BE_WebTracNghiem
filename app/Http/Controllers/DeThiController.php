@@ -56,8 +56,7 @@ class DeThiController extends Controller
             $soCauHoi = $data['soluongcauhoi'];
             $deThi->monhoc_id = $data['monhoc_id'];
             $deThi->soluongcauhoi = $soCauHoi;
-            $user = Auth::user();
-            $$deThi->user_id = $user->id;
+            $deThi->user_id = $data['user_id'];
             $deThi->save();
             for($i=0;$i<$soCauHoi;$i++){
                 $cauHoi = new Cauhoi();
