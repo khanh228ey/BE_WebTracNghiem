@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('thoigianbatdau');
             $table->dateTime('thoigiankethtuc');
             $table->integer('soluongcauhoi');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('trangthai')->default(0);
             $table->unsignedBigInteger('monhoc_id'); 
             $table->foreign('monhoc_id')->references('id')->on('monhoc')->onDelete('cascade');

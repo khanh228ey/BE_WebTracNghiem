@@ -17,7 +17,7 @@ class CauhoiController extends Controller
                 'dap_an_dung' => $item->dap_an_dung,
             ];
         }
-    
+        
         return response()->json($dapAnDung);
     }
 }

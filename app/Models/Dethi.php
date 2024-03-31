@@ -16,7 +16,7 @@ class Dethi extends Model
     }
     public function Cauhoi()
     {
-        return $this->hasMany(Cauhoi::class,'dethi_id');
+        return $this->hasMany(Cauhoi::class);
     }
    
     

@@ -124,14 +124,63 @@ class DeThiController extends Controller
         //         return response()->json(['message' => 'Sửa thông tin đề thi thành công.'], 200);
         // }
     
-    // public function xoaDeThi(string $id){
-    //         $deThi = Dethi::where('id',$id)->where('trangthai',0)->first();
-    //         Cauhoi::whereIn('dethi_id',[$deThi->id])->delete();
-    //         $deThi->delete();     
-    //         return response()->json(['message' => 'Xóa đề thi thành công.'], 200);
-    // }
-       
+    public function deleteDethi($user_id,$id) {
+        $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id',$user_id)->first();
+        $cauhoi = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id',$user_id)->first();
+
+        if ($dethi) {   
+            // Xóa từng câu hỏi
+            $cauHois = CauHoi::where('dethi_id', $id)->get();
+            foreach ($cauHois as $cauHoi) {
+                $cauHoi->delete();
+            }
+
+            // Xóa đề thi
+            $dethi->delete();
         
+            // Trả về dữ liệu JSON thông báo xóa thành công
+            return response()->json(['message' => 'Xóa đề thi thành công'], 200);
+        } else if($cauhoi) {
+            return response()->json(['message' => 'Không thể xóa đề thi'], 404);
+        } else {
+            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
+        }
+    }
+    public function update(Request $request,$user_id,$id){
+        $data = $request->all();
+        $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user_id)->first();
+        $validator = Validator::make($data, [
+            'tendethi' => 'required|string', 
+            'thoigianthi' => 'required|int'
+        ]);
+        if($validator->fails()){
+            $arr=[
+                'success' => false,
+                'message' => 'Lỗi kiểm tra dữ liệu',
+                'data' => $validator->errors()
+            ];
+            return response()->json($arr, 404);
+        }
+        else if($validator && $kiemtra){
+            $kiemtra->tendethi=$data['tendethi'];
+            $kiemtra->thoigianthi=$data['thoigianthi'];
+            /*$kiemtra->update([
+                'tendethi' => $data['tendethi'],
+                'thoigianthi' => $data['thoigianthi']
+            ]);*/
+            $kiemtra->save();
+            $arr=[
+                'status' => true,
+                'message' => 'Cập nhật thành công',
+                'data' => new \App\Http\Resources\Dethi($kiemtra),
+            ];
+            return response()->json($arr,200);
+        }
+        else{
+            return response()->json(['message','Không cập nhật được'],404);
+        }
+    }  
+    
 }
 
     

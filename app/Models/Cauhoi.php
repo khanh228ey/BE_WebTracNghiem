@@ -13,7 +13,7 @@ class Cauhoi extends Model
 
     public function Dethi()
     {
-        return $this->belongsTo(Dethi::class,'dethi_id');
+        return $this->belongsTo(Dethi::class);
     }
   
 }
