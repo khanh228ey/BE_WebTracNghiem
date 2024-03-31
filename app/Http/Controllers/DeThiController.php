@@ -158,12 +158,12 @@ class DeThiController extends Controller
                 'thoigianthi' => $data['thoigianthi']
             ]);*/
             $kiemtra->save();
-            /*$arr= $arr = [
-            'status' => true,
-            'message' => 'Cập nhật thành công',
-            'data' => new \App\Http\Resources\Dethi($kiemtra),
-            ];*/ 
-            return response()->json(['message',"Cập nhật thành công"],200);
+            $arr= $arr = [
+                'status' => true,
+                'message' => 'Cập nhật thành công',
+                'data' => new \App\Http\Resources\Dethi($kiemtra),
+            ]; 
+            return response()->json($arr,200);
         }
         else{
             return response()->json(['message','Không cập nhật được'],404);
