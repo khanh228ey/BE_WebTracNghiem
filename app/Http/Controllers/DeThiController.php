@@ -149,8 +149,19 @@ class DeThiController extends Controller
     public function update(Request $request,$user_id,$id){
         $data = $request->all();
         $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user_id)->first();
-       
-        if($kiemtra){
+        $validator = Validator::make($data, [
+            'tendethi' => 'required|string', 
+            'thoigianthi' => 'required|int'
+        ]);
+        if($validator->fails()){
+            $arr=[
+                'success' => false,
+                'message' => 'Lỗi kiểm tra dữ liệu',
+                'data' => $validator->errors()
+            ];
+            return response()->json($arr, 404);
+        }
+        else if($validator && $kiemtra){
             $kiemtra->tendethi=$data['tendethi'];
             $kiemtra->thoigianthi=$data['thoigianthi'];
             /*$kiemtra->update([
@@ -158,11 +169,11 @@ class DeThiController extends Controller
                 'thoigianthi' => $data['thoigianthi']
             ]);*/
             $kiemtra->save();
-            $arr= $arr = [
+            $arr=[
                 'status' => true,
                 'message' => 'Cập nhật thành công',
                 'data' => new \App\Http\Resources\Dethi($kiemtra),
-            ]; 
+            ];
             return response()->json($arr,200);
         }
         else{
