@@ -52,6 +52,8 @@ Route::get('xoa-mon-hoc/{id}',[MonHocController::class,'xoaMonHoc']);
 
 //api danh sach user
 Route::get('danh-sach-sinh-vien',[UserController::class,'getSinhVien']);
-
+Route::Get('danh-sach-nguoi-dung',[UserController::class,'getAllUser']);
+Route::post('them-nguoi-dung',[UserController::class,'addUser']);
+Route::post('xoa-nguoi-dung',[UserController::class,'deleteUsers']);
 //ketqua
 Route::post('nop-bai',[KetquaController::class,'ketQuaLamBai']);
