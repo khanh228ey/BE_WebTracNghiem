@@ -15,7 +15,7 @@ class KetquaController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'socaudung' => 'required|int',
-            'sodiem' => 'required|int',
+            'sodiem' => 'required|float',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);

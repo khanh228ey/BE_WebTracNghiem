@@ -17,7 +17,7 @@ class DeThiController extends Controller
     //
 
     public function getAllDeThi(){
-        $getDeThi = Dethi::with('Monhoc')->get();
+        $getDeThi = Dethi::with('Monhoc')->where('trangthai',1)->get();
         return response()->json($getDeThi,200);
     }
 
