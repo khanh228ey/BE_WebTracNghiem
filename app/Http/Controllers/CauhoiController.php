@@ -20,4 +20,27 @@ class CauhoiController extends Controller
         
         return response()->json($dapAnDung);
     }
+
+    public function deleteCauHoi(int $id){
+        $cauhoi=Cauhoi::where('dethi_id',$id)->get();
+        if($cauhoi ->isNotEmpty()){
+            foreach($cauhoi as $id) {
+                $id->delete();
+            }
+        }
+        
+    }
+
+
+    public function SuaCauHoi(Request $request, int $id){
+        $data= $request->only(['dap_an_dung']);
+        $cauhoi = Cauhoi::find($id);
+
+        if(!$cauhoi) {
+            return response()->json(['message' => 'Không tìm thấy câu hỏi'], 404); }
+        $cauhoi->update($data);
+        return response()->json(['message' => 'Cập nhật câu hỏi thành công']);
+    }
+
+
 }
