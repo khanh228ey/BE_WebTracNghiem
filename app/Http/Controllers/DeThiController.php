@@ -26,12 +26,19 @@ class DeThiController extends Controller
         return response()->json($getDeThi,200);
     }
 
+    public function getDeThiTheoGiaoVien(int $id){
+        $getDeThi = Dethi::where('user_id',$id)->get();
+        return response()->json($getDeThi,200);
+    }
+
+
+
     public function thongTinDeThi($id){
         $getThongTinDeThi = Dethi::with('Monhoc')->where('id',$id)->get();
         return response()->json($getThongTinDeThi,200);
     }
 
-    public function chiTietDeThi($id){
+    public function lamBaiThi(int $id){
         $chiTietDeThi = Dethi::with('Monhoc','Cauhoi')->where('id',$id)->first();
         return response()->json($chiTietDeThi,200);
     }

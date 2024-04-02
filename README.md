@@ -6,8 +6,10 @@ dang xuất : http://127.0.0.1:8000/logout
 /////Api Dethi 
 
 danh sach đề thi : get http://127.0.0.1:8000/ds-de-thi
+danh sach đề thi trang thái 1 : get http://127.0.0.1:8000/api/danh-sach-de-thi-public
+danh sach đề thi theo giao vien : get http://127.0.0.1:8000/api/danh-sach-de-thi-giao-vien
 thong tin de thi :  get http://127.0.0.1:8000/de-thi/{id} truyền id đề thi
-làm bài thi : get http://127.0.0.1:8000/chi-tiet-de-thi/{id} 
+làm bài thi : get http://127.0.0.1:8000/lam-bai/{id} 
 thêm đề thi : post http://127.0.0.1:8000/them-de-thi 
   truyền input tendethi string 
                 thoigianthi int
