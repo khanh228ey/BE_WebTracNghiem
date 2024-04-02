@@ -35,6 +35,7 @@ Route::post('logout',[AuthController::class,'logout']);
 
 // api dethi
 Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
+Route::get('danh-sach-de-thi-public',[DeThiController::class,'getAllDeThiPublic']);
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
 Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
 Route::post('them-de-thi',[DeThiController::class,'themDeThi']);

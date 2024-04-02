@@ -17,6 +17,11 @@ class DeThiController extends Controller
     //
 
     public function getAllDeThi(){
+        $getDeThi = Dethi::with('Monhoc')->get();
+        return response()->json($getDeThi,200);
+    }
+
+    public function getAllDeThiPublic(){
         $getDeThi = Dethi::with('Monhoc')->where('trangthai',1)->get();
         return response()->json($getDeThi,200);
     }
@@ -30,6 +35,7 @@ class DeThiController extends Controller
         $chiTietDeThi = Dethi::with('Monhoc','Cauhoi')->where('id',$id)->first();
         return response()->json($chiTietDeThi,200);
     }
+
 
 
     public function themDeThi(Request $request){

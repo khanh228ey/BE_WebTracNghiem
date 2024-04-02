@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('tendethi');
             $table->integer('thoigianthi');
             $table->dateTime('thoigianbatdau');
-            $table->dateTime('thoigiankethtuc');
+            $table->dateTime('thoigianketthuc');
             $table->integer('soluongcauhoi');
-            $table->unsignedBigInteger('user_id');
             $table->integer('trangthai')->default(0);
             $table->unsignedBigInteger('monhoc_id'); 
+            $table->unsignedBigInteger('user_id'); 
             $table->foreign('monhoc_id')->references('id')->on('monhoc')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
