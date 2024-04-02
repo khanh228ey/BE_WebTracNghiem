@@ -20,9 +20,7 @@ return new class extends Migration {
             $table->string('dap_an_c');
             $table->string('dap_an_d');
             $table->string('dap_an_dung');
-            $table->unsignedBigInteger('monhoc_id');
             $table->unsignedBigInteger('dethi_id');
-            $table->foreign('monhoc_id')->references('id')->on('monhoc')->onDelete('cascade');
             $table->foreign('dethi_id')->references('id')->on('dethi')->onDelete('cascade');
             $table->timestamps();
         });

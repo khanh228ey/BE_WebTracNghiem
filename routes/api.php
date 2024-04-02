@@ -54,6 +54,8 @@ Route::get('xoa-mon-hoc/{id}',[MonHocController::class,'xoaMonHoc']);
 
 //api danh sach user
 Route::get('danh-sach-sinh-vien',[UserController::class,'getSinhVien']);
-
+Route::get('thong-tin-user/{id}',[UserController::class,'profileUser']);
+Route::put('thay-doi-mat-khau/{id}',[AuthController::class,'changePassword']);
+Route::post('cap-nhat-thong-tin/{id}',[AuthController::class,'updateProfile']);
 //ketqua
 Route::post('nop-bai',[KetquaController::class,'ketQuaLamBai']);

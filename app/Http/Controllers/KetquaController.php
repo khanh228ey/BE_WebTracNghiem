@@ -15,7 +15,7 @@ class KetquaController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'socaudung' => 'required|int',
-            'sodiem' => 'required|int',
+            'sodiem' => 'required|float',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
@@ -26,9 +26,8 @@ class KetquaController extends Controller
         $ketQua->sodiem = $data['sodiem'];
         $ketQua->thoigianvaothi = Carbon::now();
         $ketQua->thoigianthi = 30;
-        $ketQua->dethi_id = $data['id'];
-        $user = Auth::user();
-        $ketQua->user_id = $user->id;
+        $ketQua->dethi_id = $data['dethi_id'];
+        $ketQua->user_id = $data['user_id'];
         $ketQua->save();
         return response()->json(['message' => 'Nộp bài thành công'], 200);
     }
