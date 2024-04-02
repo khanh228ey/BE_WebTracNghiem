@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class KetquaController extends Controller
 {
     //
-    public function ketQuaLamBai(Request $request){
+    public function ketQuaLamBai(Request $request,int $user_id , int $dethi_id){
         $data = $request->all();
         $validator = Validator::make($data, [
             'socaudung' => 'required|int',
@@ -26,8 +26,8 @@ class KetquaController extends Controller
         $ketQua->sodiem = $data['sodiem'];
         $ketQua->thoigianvaothi = Carbon::now();
         $ketQua->thoigianthi = 30;
-        $ketQua->dethi_id = $data['dethi_id'];
-        $ketQua->user_id = $data['user_id'];
+        $ketQua->dethi_id = $user_id;
+        $ketQua->user_id = $dethi_id;
         $ketQua->save();
         return response()->json(['message' => 'Nộp bài thành công'], 200);
     }

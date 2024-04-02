@@ -38,6 +38,7 @@ Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
 Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
 Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
+Route::post('them-de-thi-nhap',[DeThiController::class,'themDeThiNhap']);
 Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
 
 Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
