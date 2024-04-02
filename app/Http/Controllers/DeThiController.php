@@ -67,7 +67,6 @@ class DeThiController extends Controller
                 $cauHoi->dap_an_d = $data['dap_an_d'][$i];
                 $cauHoi->dap_an_dung = $data['dap_an_dung'][$i];
                 $cauHoi->dethi_id = $deThi->id;
-                $cauHoi->monhoc_id = $data['monhoc_id'];
                 $cauHoi->save();
             }
 
