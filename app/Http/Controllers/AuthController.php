@@ -46,7 +46,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'vaitro' => 2,
         ]);
-        return response()->json(['message' => 'Đăng kí thành công', 'user' => $user], 201);
+        return response()->json(['message' => 'Đăng kí thành công', 'user' => $user], 200);
     }
 
     public function logout(Request $request)
@@ -76,7 +76,7 @@ class AuthController extends Controller
         $user->name = $data['name'];
         $user->save();
     
-        return response()->json(['message' => 'Cập nhật thông tin thành công', 'user' => $user], 201);
+        return response()->json(['message' => 'Cập nhật thông tin thành công', 'user' => $user], 200);
     }
     public function changePassword(Request $request,string $id){
         $data = $request->all();

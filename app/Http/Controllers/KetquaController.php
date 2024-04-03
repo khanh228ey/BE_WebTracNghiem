@@ -26,7 +26,7 @@ class KetquaController extends Controller
         $ketQua->socaudung = $data['socaudung'];
         $ketQua->sodiem = $data['sodiem'];
         $ketQua->thoigianvaothi = Carbon::now();
-        $ketQua->thoigianthi = 30;
+        $ketQua->thoigianlambai = 50;
         $ketQua->dethi_id = $data['dethi_id'];
         $ketQua->user_id = $data['user_id'];
         $ketQua->save();
