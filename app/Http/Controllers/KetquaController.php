@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class KetquaController extends Controller
 {
     //
-    public function ketQuaLamBai(Request $request){
+    public function ketQuaLamBai(Request $request)
+    {
         $data = $request->all();
         $validator = Validator::make($data, [
             'socaudung' => 'required|int',
-            'sodiem' => 'required|float',
+            'sodiem' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
