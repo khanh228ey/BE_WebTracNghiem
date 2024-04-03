@@ -33,6 +33,10 @@ http://127.0.0.1:8000/api/chi-tiet-mon-hoc/{id} get
 http://127.0.0.1:8000/api/update-mon-hoc/{id} post
 http://127.0.0.1:8000/api/xoa-mon=hoc/{id}; get
 
+Api xóa, sửa đề thi
+http://127.0.0.1:8000/api/xoa-de-thi/{user_id}/{id} delete
+http://127.0.0.1:8000/api/them-mon-hoc/{user_id}/{id} put
+
 
 
 
