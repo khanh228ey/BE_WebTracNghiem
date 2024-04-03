@@ -65,7 +65,7 @@ class DeThiController extends Controller
             $deThi->thoigianthi = $data['thoigianthi'];
             $deThi->thoigianbatdau = Carbon::now();
             $thoigianketthuc = $deThi->thoigianbatdau->addMinutes($deThi->thoigianthi);
-            $deThi->thoigiankethtuc = $thoigianketthuc;
+            $deThi->thoigianketthuc = $thoigianketthuc;
             $soCauHoi = $data['soluongcauhoi'];
             $deThi->monhoc_id = $data['monhoc_id'];
             $deThi->soluongcauhoi = $soCauHoi;
@@ -107,7 +107,7 @@ class DeThiController extends Controller
                 $deThi->thoigianthi = $data['thoigianthi'];
                 $deThi->thoigianbatdau = Carbon::now();
                 $thoigianketthuc = $deThi->thoigianbatdau->addMinutes($deThi->thoigianthi);
-                $deThi->thoigiankethtuc = $thoigianketthuc;
+                $deThi->thoigianketthuc = $thoigianketthuc;
                 $soCauHoi = $data['soluongcauhoi'];
                 $deThi->monhoc_id = $data['monhoc_id'];
                 $deThi->soluongcauhoi = $soCauHoi;
