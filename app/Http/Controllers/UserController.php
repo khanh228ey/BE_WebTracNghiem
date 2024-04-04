@@ -12,4 +12,12 @@ class UserController extends Controller
         $users = User::where('vaitro',1)->get();
         return response()->json($users);
     }
+
+
+    public function profileUser(string $id){
+        $user = User::where('id',$id)->first();
+        return response()->json($user);
+    }
+
+
 }

@@ -35,14 +35,28 @@ Route::post('logout',[AuthController::class,'logout']);
 
 // api dethi
 Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
+
+Route::get('danh-sach-de-thi-public',[DeThiController::class,'getAllDeThiPublic']);
+
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
-Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
+
+Route::get('danh-sach-de-thi-giao-vien/{id}',[DeThiController::class,'getDeThiTheoGiaoVien']);
+
+Route::get('lam-bai/{id}',[DeThiController::class,'lamBaiThi']);
+
 Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
-//Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
+
+Route::post('them-de-thi-nhap',[DeThiController::class,'themDeThiNhap']);
+
+Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
 
 Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
 Route::delete('xoa-de-thi/{id}',[DeThiController::class,'deleteDeThi']);
 Route::put('sua-de-thi/{id}',[DeThiController::class,'update']);
+
+// api xoa + sua cau hoi 
+Route::delete('xoa-cau-hoi/{id}', [CauhoiController::class, 'deleteCauHoi']);
+Route::put('sua-cau-hoi/{id}', [CauhoiController::class, 'updateCauHoi']);
 
 //api mon hoc
 Route::get('danh-sach-mon-hoc', [MonHocController::class,'listMonHoc']);
@@ -54,6 +68,8 @@ Route::get('xoa-mon-hoc/{id}',[MonHocController::class,'xoaMonHoc']);
 
 //api danh sach user
 Route::get('danh-sach-sinh-vien',[UserController::class,'getSinhVien']);
-
+Route::get('thong-tin-user/{id}',[UserController::class,'profileUser']);
+Route::put('thay-doi-mat-khau/{id}',[AuthController::class,'changePassword']);
+Route::post('cap-nhat-thong-tin/{id}',[AuthController::class,'updateProfile']);
 //ketqua
 Route::post('nop-bai',[KetquaController::class,'ketQuaLamBai']);

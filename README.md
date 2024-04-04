@@ -6,8 +6,10 @@ dang xuất : http://127.0.0.1:8000/logout
 /////Api Dethi 
 
 danh sach đề thi : get http://127.0.0.1:8000/ds-de-thi
+danh sach đề thi trang thái 1 : get http://127.0.0.1:8000/api/danh-sach-de-thi-public
+danh sach đề thi theo giao vien : get http://127.0.0.1:8000/api/danh-sach-de-thi-giao-vien
 thong tin de thi :  get http://127.0.0.1:8000/de-thi/{id} truyền id đề thi
-làm bài thi : get http://127.0.0.1:8000/chi-tiet-de-thi/{id} 
+làm bài thi : get http://127.0.0.1:8000/lam-bai/{id} 
 thêm đề thi : post http://127.0.0.1:8000/them-de-thi 
   truyền input tendethi string 
                 thoigianthi int
@@ -30,6 +32,10 @@ http://127.0.0.1:8000/api/them-mon-hoc post
 http://127.0.0.1:8000/api/chi-tiet-mon-hoc/{id} get
 http://127.0.0.1:8000/api/update-mon-hoc/{id} post
 http://127.0.0.1:8000/api/xoa-mon=hoc/{id}; get
+
+Api xóa, sửa đề thi
+http://127.0.0.1:8000/api/xoa-de-thi/{user_id}/{id} delete
+http://127.0.0.1:8000/api/them-mon-hoc/{user_id}/{id} put
 
 
 
