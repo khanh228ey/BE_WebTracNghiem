@@ -27,7 +27,7 @@ class DethiSeeder extends Seeder
                 'soluongcauhoi' => 5,
                 'trangthai' => $trangthai,
                 'monhoc_id' => $i,
-                'user_id' => 4,
+                'user_id' => 5,
                 // Các trường khác của bảng người dùng nếu có
                 'created_at' => now(),
                 'updated_at' => now(),
