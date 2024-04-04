@@ -32,4 +32,8 @@ class KetquaController extends Controller
         $ketQua->save();
         return response()->json(['message' => 'Nộp bài thành công'], 200);
     }
+
+
+
+
 }
