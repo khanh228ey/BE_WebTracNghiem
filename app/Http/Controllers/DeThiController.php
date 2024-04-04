@@ -124,7 +124,7 @@ class DeThiController extends Controller
         //         return response()->json(['message' => 'Sửa thông tin đề thi thành công.'], 200);
         // }
     
-    public function deleteDethi($user_id,$id) {
+    public function deleteDethi($id) {
         $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id',$user_id)->first();
         $cauhoi = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id',$user_id)->first();
 
@@ -134,10 +134,8 @@ class DeThiController extends Controller
             foreach ($cauHois as $cauHoi) {
                 $cauHoi->delete();
             }
-
             // Xóa đề thi
             $dethi->delete();
-        
             // Trả về dữ liệu JSON thông báo xóa thành công
             return response()->json(['message' => 'Xóa đề thi thành công'], 200);
         } else if($cauhoi) {
@@ -146,7 +144,7 @@ class DeThiController extends Controller
             return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
         }
     }
-    public function update(Request $request,$user_id,$id){
+    public function update(Request $request,$id){
         $data = $request->all();
         $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user_id)->first();
         $validator = Validator::make($data, [
