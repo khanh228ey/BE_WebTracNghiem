@@ -189,106 +189,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <li class="treeview active">
                     <a href="">
                       <i class="fa fa-laptop"></i>
-                      <span>Danh mục</span>
+                      <span>Quản lý môn học</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                       <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Thêm danh mục</a
+                        <a href="{{route('monhoc.create')}}"
+                          ><i class="fa fa-angle-right"></i>Thêm môn học</a
                         >
                       </li>
                       <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Danh sách danh mục</a
+                        <a href="{{route('monhoc.index')}}"
+                          ><i class="fa fa-angle-right"></i>Danh sách môn học</a
                         >
                       </li>
                     </ul>
                   </li>
                 </li>
-                <li class="treeview active">
-                    <a href="#">
-                      <i class="fa fa-laptop"></i>
-                      <span>Thể loại</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Thêm thể loại</a
-                        >
-                      </li>
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Danh sách thể loại</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                </li>
-                <li class="treeview active">
-                    <a href="#">
-                      <i class="fa fa-globe"></i>
-                      <span>Quốc gia phim</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Thêm quốc gia</a
-                        >
-                      </li>
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Danh sách quốc gia</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                </li>
-                <li class="treeview active">
-                    <a href="#">
-                      <i class="fa fa-film"></i>
-                      <span>Quản lý phim</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Thêm phim</a
-                        >
-                      </li>
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Danh sách phim</a>
-                      </li>
-                      
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Leech Movie</a>
-                      </li>
-                    </ul>
-                  </li>
-                </li>
-                <li class="treeview active">
-                    <a href="#">
-                      <i class="fa fa-film"></i>
-                      <span>Quản lý tập phim</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Thêm tập phim</a
-                        >
-                      </li>
-                      <li>
-                        <a href=""
-                          ><i class="fa fa-angle-right"></i>Danh sách tập phim</a>
-                      </li>
-                    </ul>
-                  </li>
-                </li>
+      
               </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -599,7 +517,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-laptop icon-rounded"></i>
                 <div class="stats">
-                  <span>Phim được thêm trong tháng:</span><br>
+                  <span>Số lượng môn học :</span><br>
                   <b></b>
                 </div>
               </div>
@@ -608,7 +526,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
                 <div class="stats">
-                  <span>Lượt xem trong tháng :</span><br>
+                  <span>Số lượng đề thi :</span><br>
                   <b></b>
                 </div>
               </div>
@@ -617,16 +535,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-film user2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Tổng phim:</span>
+                  <span>Số lượng</span>
                   <h5><strong></strong></h5>
                 </div>
               </div>
             </div>
             <div class="col-md-3 widget widget1">
               <div class="r3_counter_box">
-                <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
+                <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Tổng tập phim :</span>
+                  <span>Số lượng sinh viên</span>
                   <h5><strong></strong></h5>
                 </div>
               </div>
@@ -635,7 +553,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Tổng thành viên</span>
+                  <span>Số lượng giáo viên</span>
                   <h5><strong></strong></h5>
                 </div>
               </div>

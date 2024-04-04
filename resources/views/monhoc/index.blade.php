@@ -6,36 +6,26 @@
             <div class="card">
               <br>
 <br>
+<br>
+<br>
 <table class="table" id="tablephim">
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col"></th>
-        <th scope="col">Description</th>
-        <th scope="col">Slug</th>
-        <th scope="col">Active/Inactive</th>
+        <th scope="col">Tên môn học</th>
         <th scope="col">Manages</th>
       </tr>
     </thead>
     <tbody>
-        @foreach ($list as $key=>$cate)
+        @foreach ($list as $key=>$monhoc)
       <tr>
-        <th scope="row">{{$cate->id}}</th>
-        <td>{{$cate->title}}</td>
-        <td>{{$cate->description}}</td>
-        <td>{{$cate->slug}}</td>
+        <th scope="row">{{$monhoc->id}}</th>
+        <td>{{$monhoc->ten}}</td>
         <td>
-            @if ($cate->status)
-                Hiển thị
-            @else
-                Không hiển thị
-            @endif
-        </td>
-        <td>
-            {!! Form::open(['method'=>'DELETE','route'=>['category.destroy',$cate->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
+            {!! Form::open(['method'=>'DELETE','route'=>['monhoc.destroy',$monhoc->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
                 {!! Form::submit('Xóa',['class'=>'btn btn-danger'])!!}
             {!! Form::close()!!}
-            <a href="{{route('category.edit',$cate->id)}}" class="btn btn-warning">Sửa</a>
+            <a href="{{route('monhoc.edit',$monhoc->id)}}" class="btn btn-warning">Sửa</a>
         </td>
       </tr>
       @endforeach
@@ -43,7 +33,7 @@
   </table>
 </div>
 </div>
-    <a href="{{route('category.create')}}"><button class="btn btn-success">Thêm danh mục</button></a>
+    <a href="{{route('monhoc.create')}}"><button class="btn btn-success">Thêm Môn học</button></a>
 </div>
 </div>
 

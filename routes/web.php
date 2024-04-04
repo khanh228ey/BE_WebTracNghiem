@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MonnhocController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,9 @@ Route::get('/add-user',[UserController::class,'addUser'])->name('addUser');
 Route::get('/edit-user/{id}',[UserController::class,'edit'])->name('editUser');
 Route::post('/update-user/{id}',[UserController::class,'update'])->name('updateUser');
 Route::POST('/store-user',[UserController::class,'store'])->name('storeUser');
+
+
+Route::resource('monhoc', MonnhocController::class);
+
+
+
