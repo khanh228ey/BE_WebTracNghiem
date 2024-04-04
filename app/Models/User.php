@@ -43,5 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function DeThi()
+    {
+        return $this->hasMany(DeThi::class);
+    }
 }

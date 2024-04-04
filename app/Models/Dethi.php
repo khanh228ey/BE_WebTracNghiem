@@ -18,6 +18,9 @@ class Dethi extends Model
     {
         return $this->hasMany(Cauhoi::class);
     }
-   
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
     
 }
