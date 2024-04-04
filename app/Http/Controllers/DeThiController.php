@@ -7,6 +7,7 @@ use App\Models\Cautraloi;
 use App\Models\ChiTietDeThi;
 use App\Models\Dethi;
 use App\Models\Ketqua;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -179,28 +180,41 @@ class DeThiController extends Controller
         // }
     
     public function deleteDethi($id) {
-        $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id',$user_id)->first();
-        $cauhoi = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id',$user_id)->first();
+        $tim = DeThi::find($id);
+        if (!$tim) {
+            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
+        }
+       
+        $de = Dethi::where('id', $id)->first();
+        $user= User::with('Dethi')->where('id', $de['user_id'])->first();
 
+        $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id', $user['id'])->first();
+        $kt = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id', $user['id'])->first();
+    
         if ($dethi) {   
-            // Xóa từng câu hỏi
+         // Xóa từng câu hỏi
             $cauHois = CauHoi::where('dethi_id', $id)->get();
             foreach ($cauHois as $cauHoi) {
                 $cauHoi->delete();
             }
-            // Xóa đề thi
-            $dethi->delete();
-            // Trả về dữ liệu JSON thông báo xóa thành công
+        // Xóa đề thi
+             $dethi->delete();
+        // Trả về dữ liệu JSON thông báo xóa thành công
             return response()->json(['message' => 'Xóa đề thi thành công'], 200);
-        } else if($cauhoi) {
-            return response()->json(['message' => 'Không thể xóa đề thi'], 404);
-        } else {
-            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
+        } else if($kt) {
+            return response()->json(['message' => 'Không thể xóa đề thi'], 400);
         }
     }
     public function update(Request $request,$id){
         $data = $request->all();
-        $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user_id)->first();
+        $tim = DeThi::find($id);
+    
+        if (!$tim) {
+            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
+        }
+        $de = Dethi::where('id', $id)->first();
+        $user= User::with('Dethi')->where('id', $de['user_id'])->first();
+        $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user['id'])->first();
         $validator = Validator::make($data, [
             'tendethi' => 'required|string', 
             'thoigianthi' => 'required|int'
