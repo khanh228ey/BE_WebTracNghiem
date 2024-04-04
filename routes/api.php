@@ -38,11 +38,11 @@ Route::get('ds-de-thi',[DeThiController::class,'getAllDeThi']);
 Route::get('de-thi/{id}',[DeThiController::class,'thongTinDeThi']);
 Route::get('chi-tiet-de-thi/{id}',[DeThiController::class,'chiTietDeThi']);
 Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
-Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
+//Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
 
 Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
-Route::delete('xoa-de-thi/{user_id}/{id}',[DeThiController::class,'deleteDeThi']);
-Route::put('sua-de-thi/{user_id}/{id}',[DeThiController::class,'update']);
+Route::delete('xoa-de-thi/{id}',[DeThiController::class,'deleteDeThi']);
+Route::put('sua-de-thi/{id}',[DeThiController::class,'update']);
 
 //api mon hoc
 Route::get('danh-sach-mon-hoc', [MonHocController::class,'listMonHoc']);
