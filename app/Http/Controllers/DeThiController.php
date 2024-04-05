@@ -179,36 +179,31 @@ class DeThiController extends Controller
         //         return response()->json(['message' => 'Sửa thông tin đề thi thành công.'], 200);
         // }
     
-    public function deleteDethi($id) {
-        $tim = DeThi::find($id);
-        if (!$tim) {
-            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
-        }
-       
-        $de = Dethi::where('id', $id)->first();
-        $user= User::with('Dethi')->where('id', $de['user_id'])->first();
-
-        $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id', $user['id'])->first();
-        $kt = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id', $user['id'])->first();
+    public function deleteDethi($user_id,$id) {
+        $dethi = DeThi::where('id', $id)->where('trangthai', 0)->where('user_id',$user_id)->first();
+        $cauhoi = DeThi::where('id', $id)->where('trangthai', 1)->where('user_id',$user_id)->first();
     
         if ($dethi) {   
-         // Xóa từng câu hỏi
+            // Xóa từng câu hỏi
             $cauHois = CauHoi::where('dethi_id', $id)->get();
             foreach ($cauHois as $cauHoi) {
                 $cauHoi->delete();
             }
-        // Xóa đề thi
-             $dethi->delete();
-        // Trả về dữ liệu JSON thông báo xóa thành công
+    
+            // Xóa đề thi
+            $dethi->delete();
+            
+                // Trả về dữ liệu JSON thông báo xóa thành công
             return response()->json(['message' => 'Xóa đề thi thành công'], 200);
-        } else if($kt) {
-            return response()->json(['message' => 'Không thể xóa đề thi'], 400);
+        } else if($cauhoi) {
+            return response()->json(['message' => 'Không thể xóa đề thi'], 404);
+        } else {
+            return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
         }
     }
     public function update(Request $request,$id){
         $data = $request->all();
         $tim = DeThi::find($id);
-    
         if (!$tim) {
             return response()->json(['message' => 'Không tìm thấy đề thi'], 404);
         }
@@ -217,7 +212,8 @@ class DeThiController extends Controller
         $kiemtra = DeThi::where('id',$id)->where('trangthai',0)->where('user_id',$user['id'])->first();
         $validator = Validator::make($data, [
             'tendethi' => 'required|string', 
-            'thoigianthi' => 'required|int'
+            'thoigianthi' => 'required|int',
+            'user_id'=>'required',
         ]);
         if($validator->fails()){
             $arr=[
@@ -230,10 +226,14 @@ class DeThiController extends Controller
         else if($validator && $kiemtra){
             $kiemtra->tendethi=$data['tendethi'];
             $kiemtra->thoigianthi=$data['thoigianthi'];
+            $kiemtra->user_id=$data['user_id'];
             /*$kiemtra->update([
                 'tendethi' => $data['tendethi'],
                 'thoigianthi' => $data['thoigianthi']
             ]);*/
+            if($data['user_id']!=$user['id']){
+                return response()->json(['message',"Bạn không có quyền thay đổi"],400);
+            }
             $kiemtra->save();
             $arr=[
                 'status' => true,
@@ -243,7 +243,7 @@ class DeThiController extends Controller
             return response()->json($arr,200);
         }
         else{
-            return response()->json(['message','Không cập nhật được'],404);
+            return response()->json(['message','Không cập nhật được'],400);
         }
     }  
     
