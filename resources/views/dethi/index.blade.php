@@ -17,6 +17,7 @@
         <th scope="col">Số lượng câu hỏi</th>
         <th scope="col">Môn học</th>
         <th scope="col">Người tạo</th>
+        <th scope="col">Manager</th>
         {{-- <th scope="col">Manages</th> --}}
       </tr>
     </thead>
@@ -29,12 +30,12 @@
         <td>{{$dethi->soluongcauhoi}}</td>
         <td>{{$dethi->Monhoc->ten}}</td>
         <td>{{$dethi->User->name}}</td>
-        {{-- <td>
-            {!! Form::open(['method'=>'DELETE','route'=>['dethi.destroy',$dethi->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
+        <td>
+            {{-- {!! Form::open(['method'=>'DELETE','route'=>['dethi.destroy',$dethi->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
                 {!! Form::submit('Xóa',['class'=>'btn btn-danger'])!!}
-            {!! Form::close()!!}
-            <a href="{{route('dethi.edit',$dethi->id)}}" class="btn btn-warning">Sửa</a>
-        </td> --}}
+            {!! Form::close()!!} --}}
+            <a href="" class="btn btn-warning">Xem kết quả</a>
+        </td>
       </tr>
       @endforeach
     </tbody>
