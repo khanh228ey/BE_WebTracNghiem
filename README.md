@@ -34,7 +34,7 @@ http://127.0.0.1:8000/api/update-mon-hoc/{id} post
 http://127.0.0.1:8000/api/xoa-mon=hoc/{id}; get
 
 Api xóa, sửa đề thi
-http://127.0.0.1:8000/api/xoa-de-thi/{id} delete
+http://127.0.0.1:8000/api/xoa-de-thi/{user_id}/{id} delete
 http://127.0.0.1:8000/api/sua-de-thi/{id} put input là tendethi,thoigianthi
 
 
