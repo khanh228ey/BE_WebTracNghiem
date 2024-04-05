@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MonnhocController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
-});
+    return view('login');
+})->name('login');
 //Users
 Route::get('/list-student',[UserController::class,'getListSinhVien'])->name('listSinhVien');
 Route::get('/list-teacher',[UserController::class,'getListGiaoVien'])->name('listGiaoVien');
@@ -29,5 +30,7 @@ Route::POST('/store-user',[UserController::class,'store'])->name('storeUser');
 
 Route::resource('monhoc', MonnhocController::class);
 
-
+//login
+Route::post('/login-admin',[AuthController::class,'loginAdmin'])->name('loginAdmin');
+Route::post('/logout-admin', [AuthController::class, 'logoutAmin'])->name('logout');
 

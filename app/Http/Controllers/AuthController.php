@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class AuthController extends Controller
 {
@@ -95,6 +96,34 @@ class AuthController extends Controller
         } else {
             return response()->json(['error' => 'Mật khẩu hiện tại không chính xác'], 400);
         }
+    }
+
+
+
+    public function loginAdmin(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $checkAdmin = User::where('email', $email)->where('password', $password)->where('vaitro', 3)->first();
+    
+        if($checkAdmin){
+            // Lưu thông tin người dùng vào session
+            Auth::login($checkAdmin);
+    
+            // Redirect đến trang nào đó sau khi đăng nhập thành công
+            toastr()->success('Đăng nhập','Đăng nhập ADMIN thành công');
+            // return redirect()->route('listSinhVien');
+            return view('app',compact('checkAdmin'));
+        } else {
+            Toastr::error('Thông tin tài khoản hoặc mật khẩu không chính xác', 'Error');
+            return redirect()->back();
+        }
+
+
+    }
+    public function logoutAdmin() {
+        Auth::logout();
+    
+        return redirect()->route('login');
     }
 
 }

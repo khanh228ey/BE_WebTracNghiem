@@ -139,16 +139,17 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form action="{{route('loginAdmin')}}" method="POST">
+        @csrf
         <h3>Login Admin</h3>
 
         <label for="username">Email</label>
-        <input type="text" placeholder="Email" id="email">
+        <input type="text" placeholder="Email" id="email" name="email">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" name="password">
 
-        <button>Log In</button>
+        <button type="submit">Log In</button>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>

@@ -4,7 +4,9 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-{{-- @if(Auth::user()->vaitro != 3) --}}
+@if(!auth()->check())
+<script>window.location = "{{ route('login') }}";</script>
+@else 
 <!DOCTYPE html>
 <html>
   <head>
@@ -476,7 +478,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                       ><img src="images/2.jpg" alt="" />
                     </span>
                     <div class="user-name">
-                      {{-- <p>{{ Auth::user()->name }}</p> --}}
+                      <p>{{ Auth::user()->name }}</p>
                       <span>Administrator</span>
                     </div>
                     <i class="fa fa-angle-down lnr"></i>
@@ -495,11 +497,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
                   </li>
                   <li>
-                     
-                      {{-- {!! Form::open(['route'=>'logout','method'=>'POST'])!!}
-                      {!! Form::submit('Logout',['class'=>'fa fa-sign-out'])!!}
-                      {!! Form::close('')!!} --}}
-                  </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out"></i> Logout
+                    </a>
+                </li>
                 </ul>
               </li>
             </ul>
@@ -1054,6 +1058,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </html>
-{{-- @else 
-<script>window.location = "{{ route('homepages') }}";</script>
-@endif --}}
+@endif
