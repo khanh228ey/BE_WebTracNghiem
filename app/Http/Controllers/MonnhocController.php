@@ -88,7 +88,7 @@ class MonnhocController extends Controller
         //
         $data = $request->all();
         $monhoc = monhoc::find($id);
-        $monhoc->name =$data['ten'];
+        $monhoc->ten =$data['ten'];
         $monhoc->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
         $monhoc->save();
         $list= monhoc::orderBy('updated_at','DESC')->get();

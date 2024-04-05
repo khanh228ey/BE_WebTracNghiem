@@ -25,7 +25,7 @@
       <tr>
         <th scope="row">{{$dethi->id}}</th>
         <td>{{$dethi->tendethi}}</td>
-        <td>{{$dethi->thoigianthi}}</td>
+        <td>{{$dethi->thoigianthi}} phút</td>
         <td>{{$dethi->soluongcauhoi}}</td>
         <td>{{$dethi->Monhoc->ten}}</td>
         <td>{{$dethi->User->name}}</td>

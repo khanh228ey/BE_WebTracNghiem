@@ -10,12 +10,12 @@ class Ketqua extends Model
     use HasFactory;
     protected $table = 'ketqua';
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function deThi()
+    public function dethi()
     {
         return $this->belongsTo(dethi::class);
     }

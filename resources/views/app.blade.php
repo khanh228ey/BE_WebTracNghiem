@@ -240,7 +240,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     >
                   </li> --}}
                   <li>
-                    <a href=""
+                    <a href="{{route('dsKetQua')}}"
                       ><i class="fa fa-angle-right"></i>Danh sách kết quả</a>
                   </li>
                 </ul>
@@ -558,8 +558,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-laptop icon-rounded"></i>
                 <div class="stats">
-                  <span>Số lượng môn học :</span><br>
-                  <b></b>
+                  <span>Môn học :</span><br>
+                  <h5><strong>{{$somonhoc}}</strong></h5>
                 </div>
               </div>
             </div>
@@ -567,7 +567,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
                 <div class="stats">
-                  <span>Số lượng đề thi :</span><br>
+                  <span>Đề thi :</span><br>
+                  <h5><strong>{{$sodethi}}</strong></h5>
                   <b></b>
                 </div>
               </div>
@@ -576,8 +577,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-film user2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Số lượng</span>
-                  <h5><strong></strong></h5>
+                  <span>Số lượng :</span>
+                  <h5><strong>{{$sosinhvien + $sogiaovien}}</strong></h5>
                 </div>
               </div>
             </div>
@@ -585,8 +586,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Số lượng sinh viên</span>
-                  <h5><strong></strong></h5>
+                  <span> Sinh viên</span>
+                  <h5><strong>{{$sosinhvien}}</strong></h5>
                 </div>
               </div>
             </div>
@@ -594,8 +595,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="r3_counter_box">
                 <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                 <div class="stats">
-                  <span>Số lượng giáo viên</span>
-                  <h5><strong></strong></h5>
+                  <span>Giáo viên</span>
+                  <h5><strong>{{$sogiaovien}}</strong></h5>
                 </div>
               </div>
             </div>

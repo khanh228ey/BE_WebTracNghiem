@@ -12,21 +12,20 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Tên sinh viên</th>
         <th scope="col">Tên đề thi</th>
+        <th scope="col">Tên sinh viên</th>
         <th scope="col">Số điểm</th>
         <th scope="col">Số đáp án đúng</th>
-        {{-- <th scope="col">Manages</th> --}}
       </tr>
     </thead>
     <tbody>
         @foreach ($ketQua as $key=>$ketqua)
       <tr>
         <th scope="row">{{$ketqua->id}}</th>
-        <td>{{$ketqua->Users->name}}</td>
-        <td>{{$ketqua->thoigianthi}}</td>
-        <td>{{$ketqua->soluongcauhoi}}</td>
-        <td>{{$ketqua->Monhoc->sodapandung}}</td>
+        <td>{{$ketqua->deThi->tendethi}}</td>
+        <td>{{$ketqua->user->name}}</td>
+        <td>{{$ketqua->sodiem}}</td>
+        <td>{{$ketqua->socaudung}}/{{$ketqua->dethi->soluongcauhoi}}</td>
         {{-- <td>
             {!! Form::open(['method'=>'DELETE','route'=>['ketqua.destroy',$ketqua->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
                 {!! Form::submit('Xóa',['class'=>'btn btn-danger'])!!}

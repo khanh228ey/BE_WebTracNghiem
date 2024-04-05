@@ -35,7 +35,7 @@ class KetquaController extends Controller
 
 
     public function ketqua(){
-        $ketQua = Ketqua::with('Users','deThi')->ordetBy('user_id','ASC')->GET();
+        $ketQua = Ketqua::with('user','dethi')->orderBy('user_id','ASC')->GET();
         return view('ketqua.index',compact('ketQua'));
     }
 
