@@ -218,7 +218,7 @@ class DeThiController extends Controller
         }
     }  
     
-    public function getDethichinhthuc( $idde, $iduser)
+    public function getDethichinhthuc($idde, $iduser)
     {
         $dethi_id = $idde;
         $user_id = $iduser;
@@ -236,6 +236,25 @@ class DeThiController extends Controller
             'ketqua'=>$ketqua,
             'cauhoi'=>$cauhoi
         ],200);
+    }
+
+    public function chuyentrangthaide(Request $request,$id)
+    {
+        $data = $request->all();
+       
+        $user_id = $data['user_id'];
+        $de = Dethi::where('id',$id)->where('user_id',$user_id)->first();
+        if($de)
+        {
+           Dethi::where('id',$id)->where('user_id',$user_id)->update([
+               'trangthai'=> 1
+            ]);
+            return  response()->json(['message','cập nhật trạng thái thành công'],200);
+        }
+        else
+        {
+            return  response()->json(['message','không thể cập nhật trạng thái'],400);
+        }
     }
 }
 

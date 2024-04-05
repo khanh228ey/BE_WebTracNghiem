@@ -54,7 +54,9 @@ Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
 Route::delete('xoa-de-thi/{user_id}/{id}',[DeThiController::class,'deleteDeThi']);
 Route::put('sua-de-thi/{id}',[DeThiController::class,'update']);
 
-Route::get('chitiet/{idde}/{iduser}',[DeThiController::class,'getDethichinhthuc']);
+Route::get('chi-tiet/{idde}/{iduser}',[DeThiController::class,'getDethichinhthuc']);
+Route::put('chuyen-trang-thai/{id}',[DeThiController::class,'chuyentrangthaide']);
+
 // api xoa + sua cau hoi 
 Route::post('xoa-cau-hoi', [CauhoiController::class, 'deleteCauHoi']);
 Route::put('sua-cau-hoi/{id}', [CauhoiController::class, 'updateCauHoi']);
