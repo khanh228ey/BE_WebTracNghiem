@@ -23,39 +23,43 @@ class CauhoiController extends Controller
         return response()->json($dapAnDung);
     }
 
-    public function deleteCauHoi(int $id){
-        $user = User::where('id',$id);
-        $cauhoi = Cauhoi::find($id);
-         if(!$cauhoi) {
-            return response()->json(['message' => 'Không tìm thấy câu hỏi'], 400);
-        }
-
-        $dethi=Dethi::find($cauhoi->dethi_id);
-        if($user->id!== $dethi->user_id) {
-            return response()->json(['message' => 'Bạn không có quyền'],408);
-        };
-
-        $cauhoi->delete();
-          return response()->json(['message' => 'Xóa câu hỏi thành công'],200);
-    }
-
-
     public function updateCauHoi(Request $request, int $id){
-        $user = User::where('id',$id);
-        $data = $request->only(['dap_an_dung']);
+        $data = $request->all(); 
+        $idUser = $data['user_id'];
         $cauhoi = Cauhoi::find($id);
-        if(!$cauhoi) {
-            return response()->json(['message' => 'Không tìm thấy câu hỏi'], 400);
-        }
-
-        $dethi=Dethi::find($cauhoi->dethi_id);
-        if($user->id!== $dethi->user_id) {
+        $idDeThi = $cauhoi->dethi_id;
+        $checkDeThi = Dethi::where('id',$idDeThi)->where('user_id',$idUser)->first();
+        if($checkDeThi){
+            $cauhoi->noidung = $data['noidung'];
+            $cauhoi->dap_an_a = $data['dap_an_a'];
+            $cauhoi->dap_an_b = $data['dap_an_b'];
+            $cauhoi->dap_an_c = $data['dap_an_c'];
+            $cauhoi->dap_an_d = $data['dap_an_d'];
+            $cauhoi->dap_an_dung = $data['dap_an_dung'];
+            $cauhoi->save();
+            return response()->json(['message' => 'Cập nhật thành công'],200);
+        }else{
             return response()->json(['message' => 'Bạn không có quyền'],408);
-        };
-
-        $cauhoi->update($data);
-         return response()->json(['message' => 'Cập nhật câu hỏi thành công'],200);
+        }
+           
     }
 
+    public function deleteCauHoi(Request $request){
+        $data = $request->all(); 
+        $idUser = $data['user_id'];
+        $id = $data['id'];
+        $cauhoi = Cauhoi::find($id);
+        $idDeThi = $cauhoi->dethi_id;
+        $checkDeThi = Dethi::where('id',$idDeThi)->where('user_id',$idUser)->first();
+        if($checkDeThi){
+            $soLuong = $checkDeThi->soluongcauhoi;
+            $checkDeThi->soluongcauhoi= $soLuong -1;
+            $checkDeThi->save();
+            $cauhoi->delete();
+            return response()->json(['message' => 'Xóa câu hỏi thành công'],200);
+        }else{
+            return response()->json(['message' => 'Bạn không có quyền'],408);
+        }
+    }
 
 }
