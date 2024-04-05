@@ -48,7 +48,7 @@ Route::post('them-de-thi',[DeThiController::class,'themDeThi']);
 
 Route::post('them-de-thi-nhap',[DeThiController::class,'themDeThiNhap']);
 
-Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
+//Route::post('sua-de-thi/{id}',[DeThiController::class,'updateDeThi']);
 
 Route::get('dap-an-dung/{id}',[CauhoiController::class,'getDapAnDung']);
 Route::delete('xoa-de-thi/{user_id}/{id}',[DeThiController::class,'deleteDeThi']);
@@ -60,6 +60,7 @@ Route::put('chuyen-trang-thai/{id}',[DeThiController::class,'chuyentrangthaide']
 // api xoa + sua cau hoi 
 Route::post('xoa-cau-hoi', [CauhoiController::class, 'deleteCauHoi']);
 Route::put('sua-cau-hoi/{id}', [CauhoiController::class, 'updateCauHoi']);
+Route::post('them-cau-hoi',[CauhoiController::class,'addCauHoi']);
 
 //api mon hoc
 Route::get('danh-sach-mon-hoc', [MonHocController::class,'listMonHoc']);
