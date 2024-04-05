@@ -219,10 +219,7 @@ class DeThiController extends Controller
     }  
 
 
-    public function dsDeThi(){
-        $getDSDeThi = Dethi::with('User','Monhoc')->where('trangthai',1)->get();
-        return view('dethi.index',compact('getDSDeThi'));
-    }
+   
     
     public function getDethichinhthuc($idde, $iduser)
     {
@@ -262,6 +259,19 @@ class DeThiController extends Controller
             return  response()->json(['message','không thể cập nhật trạng thái'],400);
         }
     }
+
+
+    public function dsDeThi(){
+        $getDSDeThi = Dethi::with('User','Monhoc')->where('trangthai',1)->get();
+        return view('dethi.index',compact('getDSDeThi'));
+    }
+
+    public function xemDeThiTheoGiaoVien(int $id){
+            $getDSDeThi = Dethi::with('User','Monhoc')->where('trangthai',1)->where('user_id',$id)->get();
+            return view('dethi.index',compact('getDSDeThi'));
+    }
+
+   
 }
 
     

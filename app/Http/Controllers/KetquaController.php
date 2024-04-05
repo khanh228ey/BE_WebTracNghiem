@@ -39,6 +39,15 @@ class KetquaController extends Controller
         return view('ketqua.index',compact('ketQua'));
     }
 
+    public function getKetQuaTheoDeThi(int $id){
+        $ketQua = Ketqua::with('dethi')->where('dethi_id',$id)->get();
+        return view('ketqua.index',compact('ketQua'));
+    }
+    public function getKetQuaTheoSinhVien(int $id){
+        $ketQua = Ketqua::with('user')->where('user_id',$id)->get();
+        return view('ketqua.index',compact('ketQua'));
+    }
+
 
 
 }

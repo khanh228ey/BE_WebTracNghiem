@@ -34,7 +34,7 @@
             {{-- {!! Form::open(['method'=>'DELETE','route'=>['dethi.destroy',$dethi->id],'onsubmit'=>'return confirm("Xóa hay ko")'])!!}
                 {!! Form::submit('Xóa',['class'=>'btn btn-danger'])!!}
             {!! Form::close()!!} --}}
-            <a href="" class="btn btn-warning">Xem kết quả</a>
+            <a href="{{route('ketquatheodethi',$dethi->id)}}" class="btn btn-warning">Xem kết quả</a>
         </td>
       </tr>
       @endforeach

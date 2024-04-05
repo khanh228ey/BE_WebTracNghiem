@@ -86,31 +86,10 @@ class CauhoiController extends Controller
                 // Cập nhật số lượng câu hỏi trong bảng đề thi
                 Dethi::where('id', $dethi_id)->update(['soluongcauhoi' => $so_luong_cau_hoi]);
 
-<<<<<<< HEAD
-    public function deleteCauHoi(Request $request){
-        $data = $request->all(); 
-        $idUser = $data['user_id'];
-        $id = $data['id'];
-        $cauhoi = Cauhoi::find($id);
-        $idDeThi = $cauhoi->dethi_id;
-        $checkDeThi = Dethi::where('id',$idDeThi)->where('user_id',$idUser)->first();
-        if($checkDeThi){
-            $soLuong = $checkDeThi->soluongcauhoi;
-            $checkDeThi->soluongcauhoi= $soLuong -1;
-            $checkDeThi->save();
-            $cauhoi->delete();
-            return response()->json(['message' => 'Xóa câu hỏi thành công'],200);
-        }else{
-            return response()->json(['message' => 'Bạn không có quyền'],408);
-        }
-    }
-
-=======
                 return response()->json(['message' => "Thêm câu hỏi thành công"], 200);
             }
         } //else {
             //return response()->json(['error' => "Thêm câu hỏi thất bại"], 500);
         //}
     }
->>>>>>> origin/xoasuade
 }

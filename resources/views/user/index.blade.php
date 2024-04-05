@@ -14,6 +14,7 @@
         <th scope="col">Email</th>
         <th scope="col">Vai trò</th>
         <th scope="col">Cập Nhật</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -31,6 +32,15 @@
             {!! Form::close()!!}
             <a href="{{route('editUser',$user->id)}}" class="btn btn-warning">Sửa</a>
         </td>
+        @if($user->vaitro==2)
+        <td>
+          <a href="{{route('ketquatheosinhvien',$user->id)}}" class="btn btn-warning">Xem kết quả</a>
+        </td>
+        @else
+        <td>
+          <a href="{{route('dethigiaovien',$user->id)}}" class="btn btn-warning">Xem đề đã tạo </a>
+        </td>
+        @endif
       </tr>
       @endforeach
     </tbody>

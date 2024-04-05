@@ -39,7 +39,10 @@ Route::post('/logout-admin', [AuthController::class, 'logoutAmin'])->name('logou
 
 //Dethi 
 Route::Get('/list-de-thi',[DeThiController::class,'dsDeThi'])->name('dsDeThi');
+Route::Get('/list-de-thi/giao-vien/{id}',[DeThiController::class,'xemDeThiTheoGiaoVien'])->name('dethigiaovien');
 
 
 //Kết quả 
 Route::Get('/list-ket-qua',[KetquaController::class,'ketqua'])->name('dsKetQua');
+Route::Get('/list-ket-qua/{id}',[KetquaController::class,'getKetQuaTheoDeThi'])->name('ketquatheodethi');
+Route::Get('/list-ket-qua-sinh-vien/{id}',[KetquaController::class,'getKetQuaTheoSinhVien'])->name('ketquatheosinhvien');
