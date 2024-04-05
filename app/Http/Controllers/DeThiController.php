@@ -218,6 +218,25 @@ class DeThiController extends Controller
         }
     }  
     
+    public function getDethichinhthuc( $idde, $iduser)
+    {
+        $dethi_id = $idde;
+        $user_id = $iduser;
+
+     
+        $dethi = Dethi::select('id', 'tendethi')->where('id',$dethi_id)->where('trangthai', 1)->where('user_id', $user_id)->first();
+        $ketqua = Ketqua::select('ketqua.sodiem', 'ketqua.socaudung', 'users.name')
+        ->join('users', 'users.id', '=', 'ketqua.user_id')
+        ->where('ketqua.dethi_id', $dethi_id)
+        ->get();
+        $cauhoi = Cauhoi::select('noidung','dap_an_a','dap_an_b','dap_an_c','dap_an_d')->where('dethi_id',$dethi_id)->get();
+        
+        return response()->json([
+            'dethi'=>$dethi,
+            'ketqua'=>$ketqua,
+            'cauhoi'=>$cauhoi
+        ],200);
+    }
 }
 
     
