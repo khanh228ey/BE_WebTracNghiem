@@ -28,7 +28,7 @@ class DeThiController extends Controller
     }
 
     public function getDeThiTheoGiaoVien(int $id){
-        $getDeThi = Dethi::where('user_id',$id)->get();
+        $getDeThi = Dethi::withCount('ketqua')->where('user_id',$id)->get();
         return response()->json($getDeThi,200);
     }
 
@@ -217,6 +217,12 @@ class DeThiController extends Controller
             return response()->json(['message','Không cập nhật được'],400);
         }
     }  
+
+
+    public function dsDeThi(){
+        $getDSDeThi = Dethi::with('User','Monhoc')->where('trangthai',1)->get();
+        return view('dethi.index',compact('getDSDeThi'));
+    }
     
 }
 

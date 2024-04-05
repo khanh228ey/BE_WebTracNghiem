@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeThiController;
+use App\Http\Controllers\KetquaController;
 use App\Http\Controllers\MonnhocController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +36,10 @@ Route::resource('monhoc', MonnhocController::class);
 Route::post('/login-admin',[AuthController::class,'loginAdmin'])->name('loginAdmin');
 Route::post('/logout-admin', [AuthController::class, 'logoutAmin'])->name('logout');
 
+
+//Dethi 
+Route::Get('/list-de-thi',[DeThiController::class,'dsDeThi'])->name('dsDeThi');
+
+
+//Kết quả 
+Route::Get('/list-ket-qua',[KetquaController::class,'ketqua'])->name('dsKetQua');

@@ -208,7 +208,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </ul>
                   </li>
                 </li>
-      
+                <li class="treeview active">
+                  <a href="">
+                    <i class="fa fa-laptop"></i>
+                    <span>Quản lý đề thi</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    {{-- <li>
+                      <a href=""
+                        ><i class="fa fa-angle-right"></i>Thêm đề thi</a
+                      >
+                    </li> --}}
+                    <li>
+                      <a href="{{route('dsDeThi')}}"
+                        ><i class="fa fa-angle-right"></i>Danh sách đề thi</a>
+                    </li>
+                  </ul>
+                </li>
+              </li>
+              <li class="treeview active">
+                <a href="">
+                  <i class="fa fa-laptop"></i>
+                  <span>Quản lý kết quả</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  {{-- <li>
+                    <a href=""
+                      ><i class="fa fa-angle-right"></i>Thêm đề thi</a
+                    >
+                  </li> --}}
+                  <li>
+                    <a href=""
+                      ><i class="fa fa-angle-right"></i>Danh sách kết quả</a>
+                  </li>
+                </ul>
+              </li>
+            </li>
               </ul>
             </div>
             <!-- /.navbar-collapse -->

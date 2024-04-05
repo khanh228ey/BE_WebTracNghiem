@@ -22,5 +22,8 @@ class Dethi extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function ketqua(){
+        return $this->hasMany(ketqua::class);
+    }
     
 }
