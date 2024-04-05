@@ -47,46 +47,56 @@ class DeThiController extends Controller
 
 
     public function themDeThi(Request $request){
-        $data = $request->all();
-        $validator = Validator::make($data, [
-            'tendethi' => 'required|string|max:255',
-            'thoigianthi' => 'required|int',
-            'noidung' => 'required|max:255',
-            'dap_an_a' => 'required|max:255',
-            'dap_an_b' => 'required|max:255',
-            'dap_an_c' => 'required|max:255',
-            'dap_an_d' => 'required|max:255',
-            'dap_an_dung' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        }
+            $data = $request->all();
+        
+            // Validate dữ liệu
+            $validator = Validator::make($data, [
+                'tendethi' => 'required|string|max:255',
+                'thoigianthi' => 'required|int',
+                'soluongcauhoi' => 'required|int',
+                'user_id' => 'required|int',
+                'monhoc_id' => 'required|int',
+                'cauhoi' => 'required|array',
+                'cauhoi.*.noidung' => 'required|string|max:255',
+                'cauhoi.*.dap_an_a' => 'required|string|max:255',
+                'cauhoi.*.dap_an_b' => 'required|string|max:255',
+                'cauhoi.*.dap_an_c' => 'required|string|max:255',
+                'cauhoi.*.dap_an_d' => 'required|string|max:255',
+                'cauhoi.*.dap_an_dung' => 'required|string|max:1',
+            ]);
+        
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()], 422);
+            }
+        
+            // Tạo đề thi mới
             $deThi = new Dethi();
             $deThi->tendethi = $data['tendethi'];
             $deThi->thoigianthi = $data['thoigianthi'];
-            $deThi->thoigianbatdau = Carbon::now();
-            $thoigianketthuc = $deThi->thoigianbatdau->addMinutes($deThi->thoigianthi);
-            $deThi->thoigianketthuc = $thoigianketthuc;
-            $soCauHoi = $data['soluongcauhoi'];
+            $deThi->thoigianbatdau = now();
+            $deThi->thoigianketthuc = now()->addMinutes($data['thoigianthi']);
+            $deThi->soluongcauhoi = $data['soluongcauhoi'];
             $deThi->monhoc_id = $data['monhoc_id'];
-            $deThi->soluongcauhoi = $soCauHoi;
             $deThi->user_id = $data['user_id'];
             $deThi->trangthai = 1;
             $deThi->save();
-            for($i=0;$i<$soCauHoi;$i++){
+        
+            // Thêm các câu hỏi cho đề thi
+            foreach ($data['cauhoi'] as $cauhoiData) {
                 $cauHoi = new Cauhoi();
-                $cauHoi->noidung = $data['noidung'][$i];
-                $cauHoi->dap_an_a = $data['dap_an_a'][$i];
-                $cauHoi->dap_an_b = $data['dap_an_b'][$i];
-                $cauHoi->dap_an_c = $data['dap_an_c'][$i];
-                $cauHoi->dap_an_d = $data['dap_an_d'][$i];
-                $cauHoi->dap_an_dung = $data['dap_an_dung'][$i];
+                $cauHoi->noidung = $cauhoiData['noidung'];
+                $cauHoi->dap_an_a = $cauhoiData['dap_an_a'];
+                $cauHoi->dap_an_b = $cauhoiData['dap_an_b'];
+                $cauHoi->dap_an_c = $cauhoiData['dap_an_c'];
+                $cauHoi->dap_an_d = $cauhoiData['dap_an_d'];
+                $cauHoi->dap_an_dung = $cauhoiData['dap_an_dung'];
                 $cauHoi->dethi_id = $deThi->id;
                 $cauHoi->save();
             }
-
+        
             return response()->json(['message' => 'Tạo đề thi thành công.'], 200);
-        }
+        
+    }
 
         public function themDeThiNhap(Request $request){
             $data = $request->all();
@@ -129,55 +139,6 @@ class DeThiController extends Controller
                 return response()->json(['message' => 'Tạo đề thi thành công.'], 200);
             }
 
-        // public function updateDeThi(Request $request, string $id){
-        //         $data = $request->all();
-        //         $deThi = Dethi::where('id', $id)->where('trangthai', 0)->first();
-        //         $cauHoiList = Cauhoi::where('dethi_id', $id)->get();
-
-        //         $validator = Validator::make($data, [
-        //             'tendethi' => 'required|string|max:255',
-        //             'thoigianthi' => 'required|int',
-        //             'noidung.*' => 'required|max:255',
-        //             'dap_an_a.*' => 'required|max:255',
-        //             'dap_an_b.*' => 'required|max:255',
-        //             'dap_an_c.*' => 'required|max:255',
-        //             'dap_an_d.*' => 'required|max:255',
-        //             'dap_an_dung.*' => 'required',
-        //             'soluongcauhoi' => 'required|int',
-        //             'monhoc_id' => 'required|int',
-        //         ]);
-
-        //         if ($validator->fails()) {
-        //             return response()->json(['error' => $validator->errors()], 422);
-        //         }
-
-        //         $deThi->tendethi = $data['tendethi'];
-        //         $deThi->thoigianthi = $data['thoigianthi'];
-        //         $deThi->thoigianbatdau = Carbon::now();
-        //         $thoigianketthuc = $deThi->thoigianbatdau->addMinutes($deThi->thoigianthi);
-        //         $deThi->thoigianketthuc = $thoigianketthuc;
-        //         $deThi->soluongcauhoi = $data['soluongcauhoi'];
-        //         $deThi->monhoc_id = $data['monhoc_id'];
-        //         $deThi->save();
-
-        //         // Xóa tất cả câu hỏi cũ của đề thi
-        //         Cauhoi::where('dethi_id', $id)->delete();
-
-        //         for ($i = 0; $i < $data['soluongcauhoi']; $i++) {
-        //             $cauHoi = new Cauhoi();
-        //             $cauHoi->noidung = $data['noidung'][$i];
-        //             $cauHoi->dap_an_a = $data['dap_an_a'][$i];
-        //             $cauHoi->dap_an_b = $data['dap_an_b'][$i];
-        //             $cauHoi->dap_an_c = $data['dap_an_c'][$i];
-        //             $cauHoi->dap_an_d = $data['dap_an_d'][$i];
-        //             $cauHoi->dap_an_dung = $data['dap_an_dung'][$i];
-        //             $cauHoi->dethi_id = $deThi->id;
-        //             $cauHoi->monhoc_id = $data['monhoc_id'];
-        //             $cauHoi->save();
-        //         }
-
-        //         return response()->json(['message' => 'Sửa thông tin đề thi thành công.'], 200);
-        // }
     
     public function deleteDethi($id) {
         $tim = DeThi::find($id);
